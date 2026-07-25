@@ -4,7 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routes.tts import router as tts_router
 
 app = FastAPI()
-app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
