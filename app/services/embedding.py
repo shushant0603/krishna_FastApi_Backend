@@ -1,5 +1,7 @@
-from langchain_huggingface import HuggingFaceEmbeddings
+from app.config import HF_TOKEN
+from langchain_huggingface import HuggingFaceEndpointEmbeddings
 
-embeddings = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
+embeddings = HuggingFaceEndpointEmbeddings(
+    model="sentence-transformers/all-MiniLM-L6-v2",
+    huggingfacehub_api_token=HF_TOKEN,
 )
