@@ -1,7 +1,12 @@
-from langchain_huggingface import HuggingFaceEmbeddings
+from app.config import HF_TOKEN
+from langchain_huggingface import HuggingFaceEndpointEmbeddings
 
-embeddings = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2",
-    model_kwargs={"device": "cpu"},
-    encode_kwargs={"normalize_embeddings": False},
+if not HF_TOKEN:
+    raise RuntimeError(
+        "HF_TOKEN is missing. Add HF_TOKEN in Backend/.env to use Hugging Face embeddings."
+    )
+
+embeddings = HuggingFaceEndpointEmbeddings(
+    model="sentence-transformers/all-MiniLM-L6-v2",
+    huggingfacehub_api_token=HF_TOKEN,
 )
